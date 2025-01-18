@@ -6,7 +6,9 @@ import ChatSection from './ChatSection/ChatSection'
 import RoomLabel from './RoomLabel'
 import { connect } from 'react-redux'
 import * as webRtchandler from "../../utils/webRtcHandler"
-const RoomPage = ({ roomId, isRoomHost, identity }) => {
+import Overlay from './Overlay'
+
+const RoomPage = ({ roomId, isRoomHost, identity, showOverlay }) => {
 
     useEffect(() => {
         webRtchandler.getLocalPreviemAndInitConnection(
@@ -19,6 +21,7 @@ const RoomPage = ({ roomId, isRoomHost, identity }) => {
       <VideoSection />
       <ChatSection />
       <RoomLabel roomId={roomId} />
+      {showOverlay && <Overlay />}
     </div>
   )
 }

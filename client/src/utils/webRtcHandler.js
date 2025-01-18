@@ -1,4 +1,7 @@
-import { Stream } from "twilio/lib/twiml/VoiceResponse";
+import { setShowOverlay } from "@/store/action";
+import store from "@/store/store";
+import * as wss from "./wss"
+
 
 const defaultConstraints = {
   audio: true,
@@ -18,9 +21,11 @@ export const getLocalPreviemAndInitConnection = async (
         console.log("Successfully recieve local stream")
       localStream = stream;
       showLoaclVideoPreview(localStream);
-    //   isRoomHost
-    //     ? wss.createNewRoom(identity)
-    //     : wss.joinRoom(roomId, identity);
+    //   dispatch an action to hide overlay 
+    store.dispatch(setShowOverlay(false))
+      isRoomHost
+        ? wss.createNewRoom(identity)
+        : wss.joinRoom(identity, roomId);
     })
     .catch((err) => {
         console.log(" errorwhen trying to get access to the media stream")
