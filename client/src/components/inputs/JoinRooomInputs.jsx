@@ -12,7 +12,7 @@ const JoinRooomInputs = (props) => {
     const handleRoomIdValueChange = (event) => {
         setRoomIdValue(event.target.value)
     }
-
+console.log("roomValue" + roomIdValue)
     const handleNameValueChnage = (event) => {
         setNameValue(event.target.value)
     }

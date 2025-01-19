@@ -42,7 +42,7 @@ const mapStoreStateToProps = (state) => {
 
 const mapActionsToProps = (dispatch) => {
     return {
-        setIsRoomHostAction: (isRoomHost) => dispatch(setIsRoomHost(isRoomHost)),
+        setIsRoomHostAction: (isRoomHost) => dispatch(setIsRoomHost(isRoomHost))
     }
 }
 export default connect(mapStoreStateToProps, mapActionsToProps)(JoinRoomPage)

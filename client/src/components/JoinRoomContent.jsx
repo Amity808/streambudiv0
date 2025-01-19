@@ -12,7 +12,7 @@ const JoinRoomContent = (props) => {
         setConnectOnlyWithAudio, 
         connectOnlyWithAudio, 
         setIdentityAction, setRoomIdAction } = props
-    const [roomIdvalue, setRoomIdValue] = useState('');
+    const [roomIdValue, setRoomIdValue] = useState('');
     const [nameValue, setNameValue] = useState('')
     const [errorMessage, setErrorMessage] = useState(null)
     // handleJoinRoom, isRoomHost 
@@ -31,8 +31,8 @@ const JoinRoomContent = (props) => {
 
 
     const joinRoom = async () => {
-        console.log('joining room ');
-        const responseMessage = await getRoomExists(roomIdvalue);
+        const responseMessage = await getRoomExists(roomIdValue);
+        console.log("responseMessage: " + JSON.stringify(responseMessage));
         
         const { roomExists, full } = responseMessage;
 
@@ -42,7 +42,7 @@ const JoinRoomContent = (props) => {
             }else {
                 // join a room
                 // save in our redux store meeting id which was provided by user which would like join
-                setRoomIdAction(roomIdvalue)
+                setRoomIdAction(roomIdValue)
                 router.push('/room')
 
             }
@@ -57,7 +57,7 @@ const JoinRoomContent = (props) => {
   return (
     <>
     <JoinRooomInputs 
-    roomIdvalue={roomIdvalue} setRoomIdValue={setRoomIdValue}
+    roomIdValue={roomIdValue} setRoomIdValue={setRoomIdValue}
     nameValue={nameValue} setNameValue={setNameValue} isRoomHost={isRoomHost}
      />
      <OnlyWithAudioCheck
@@ -81,9 +81,7 @@ const mapStoreStateToProps = (state) => {
 const mapActionsToProps = (dispatch) => {
     return {
         setConnectOnlyWithAudio: (onlyWithAudio) => dispatch(setConnectOnlyWithAudio(onlyWithAudio)),
-        setIdentityAction: (identity) => {
-            dispatch(setIdentity(identity))
-        },
+        setIdentityAction: (identity) => dispatch(setIdentity(identity)),
         setRoomIdAction: (roomId) => dispatch(setRoomId(roomId))
     }
 }

@@ -12,7 +12,7 @@ const RoomPage = ({ roomId, isRoomHost, identity, showOverlay }) => {
 
     useEffect(() => {
         webRtchandler.getLocalPreviemAndInitConnection(
-            isRoomHost, identity, roomId
+            isRoomHost, identity, roomId 
         );
     }, [])
   return (
